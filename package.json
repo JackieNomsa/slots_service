@@ -1,0 +1,19 @@
+{
+  "name": "slots_service",
+  "version": "1.0.0",
+  "description": "available time slots for a public service to the public",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackieNomsa/slots_service.git"
+  },
+  "author": "Jackie Dube",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JackieNomsa/slots_service/issues"
+  },
+  "homepage": "https://github.com/JackieNomsa/slots_service#readme"
+}
