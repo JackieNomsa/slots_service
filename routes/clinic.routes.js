@@ -1,5 +1,5 @@
 module.exports = app => {
-    const slots = require("../controllers/clinic.controller.js");
+    const slots = require("../controllers/clinic.controller");
   
     var router = require("express").Router();
   

@@ -13,7 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "testing"});
 });
-require("./routes/slots.routes")(app);
+require("./routes/clinic.routes")(app);
+require("./routes/home_affairs.routes")(app);
+
 
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {
