@@ -10,6 +10,7 @@ exports.create = (req, res) => {
     const slot = new Slot({
       time: req.body.time,
       location: req.body.location,
+      type:"cc",
       booked: req.body.booked ? req.body.booked : false,
     });
 
@@ -28,7 +29,9 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  Slot.find()
+  const type = "cc";
+  var condition = type ? { type: { $regex: new RegExp(type), $options: "i" } } : {};
+  Slot.find(condition)
     .then(data => {
       res.send(data);
     })

@@ -1,5 +1,5 @@
 const db = require("../models");
-const Slot = db.Slot
+const Slot = db.slot
 
 exports.create = (req, res) => {
     if (!req.body.time || !req.body.location) {
@@ -10,6 +10,7 @@ exports.create = (req, res) => {
     const slot = new Slot({
       time: req.body.time,
       location: req.body.location,
+      type:"ha",
       booked: req.body.booked ? req.body.booked : false,
     });
 
@@ -28,7 +29,9 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-  Slot.find()
+  const type = "ha";
+  var condition = type ? { type: { $regex: new RegExp(type), $options: "i" } } : {};
+  Slot.find(condition)
     .then(data => {
       res.send(data);
     })
