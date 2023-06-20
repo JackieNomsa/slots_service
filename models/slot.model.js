@@ -6,7 +6,8 @@ module.exports = mongoose => {
           time: String,
           location: String,
           booked: Boolean,
-          type:String
+          type:String,
+          reference: String
         },
         { timestamps: true }
       )

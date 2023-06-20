@@ -12,6 +12,7 @@ exports.create = (req, res) => {
       location: req.body.location,
       type:"cc",
       booked: req.body.booked ? req.body.booked : false,
+      reference: null,
     });
 
     slot
