@@ -1,31 +1,17 @@
 const db = require("../models");
-const Slot = db.Slot
+const Slot = db.slot
 
 exports.create = (req, res) => {
-    if (!req.body.title) {
-        res.status(400).send({ message: "Content can not be empty!" });
+    if (!req.body.time || !req.body.location) {
+        res.status(400).send({ message: "all fields need to be set" });
         return;
       }
-
-  var multer = require('multer');
-       
-  var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-  });
-  var multer = require('multer');
-
-  var upload = multer({ storage: storage });
     
-      const slot = new Slot({
-        time: req.body.time,
-        location: req.body.location,
-        booked: req.body.booked ? req.body.booked : false,
-      });
+    const slot = new Slot({
+      time: req.body.time,
+      location: req.body.location,
+      booked: req.body.booked ? req.body.booked : false,
+    });
 
     slot
     .save(slot)
@@ -67,7 +53,7 @@ exports.findOne = (req, res) => {
     .catch(err => {
       res
         .status(500)
-        .send({ message: "Error retrieving SLot with id=" + id });
+        .send({ message: "Error retrieving Slot with id=" + id });
     });
   
 };

@@ -2,30 +2,16 @@ const db = require("../models");
 const Slot = db.Slot
 
 exports.create = (req, res) => {
-    if (!req.body.title) {
+    if (!req.body.time || !req.body.location) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
       }
-
-  var multer = require('multer');
-       
-  var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-  });
-  var multer = require('multer');
-
-  var upload = multer({ storage: storage });
     
-      const slot = new Slot({
-        time: req.body.time,
-        location: req.body.location,
-        booked: req.body.booked ? req.body.booked : false,
-      });
+    const slot = new Slot({
+      time: req.body.time,
+      location: req.body.location,
+      booked: req.body.booked ? req.body.booked : false,
+    });
 
     slot
     .save(slot)
